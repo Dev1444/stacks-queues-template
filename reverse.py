@@ -1,25 +1,37 @@
-# MODIFY ME TO IMPLEMENT YOUR SOLUTION
-# TO PROBLEM 1: REVERSE QUEUE
-#
-# NAME:         FIXME
+from collections import deque
+
+# NAME:         Deven Mistry
 # ASSIGNMENT:   Project 2: Stacks & Queues
 
-from Queue import Queue
-from Stack import Stack
+# this method return the reversed queue
+def reverse(Q):
+        # Queue length
+        length = len(Q)
+        # 2nd queue
+        queue = deque()
+        # Queue iteration
+        for i in range(length):
+                # Last element
+                for j in range(length - 1):
+                        a = Q.popleft()
+                        Q.appendleft(a)
+                # Added to the new queue
+                queue.appendleft(Q.popleft())
+        # Queue returned
+        return queue
 
+# Declare a queue
+Que = deque()
 
-# Return a new queue in reverse order
-# Hint: can use a stack to help
-def reverse(q_orig):
-    q_new = Queue([])
-    return q_new
+# Elements add into que
+Que.append(1)
+Que.append(2)
+Que.append(3)
+Que.append(4)
 
-def main():
-    q = Queue(list(range(1, 5)))
-    q.print()
-    print("reverse: ", end="")
-    reverse(q).print()
+# call the reverse function
+queue = reverse(Que)
 
-# Don't run main on import
-if __name__ == "__main__":
-    main()
+# Print the reversed queue
+while (len(queue) > 0):
+        print(queue.popleft(), end = " ")
